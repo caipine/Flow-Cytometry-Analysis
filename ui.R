@@ -1,5 +1,5 @@
 shinyUI(fluidPage(
-        titlePanel("Flow Cytometry Analysis Application"),
+        titlePanel("Flow Cytometry Analysis Application, (please be patient, it takes about 1 minute to show plot)"),
         sidebarLayout(
                 sidebarPanel(
                         fileInput('file1', 'Choose file to upload',
