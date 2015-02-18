@@ -45,10 +45,10 @@ shinyUI(fluidPage(
                         
                         tags$hr(),
                         p('This app is for Flow Cytometry Data (.fcs file) analysis. Usually, you can use FCS_Express or Flowjo to analyze flow cytometry data, but you need buy such kind of programs.'),
-                        p('Here, we provide a app to analyze you own .fcs data for free. The app loaded a default file, you change to your own .fcs file,  if you do not have your own .fcs file, you can download one example from.'), 
+                        p('Here, we provide this app to analyze your own .fcs data for free. The app loaded a default .fcs file, however, you change to your own .fcs file,  if you do not have .fcs file, please download examples from https://github.com/caipine/FlowC/blob/master/Cell%20control.fcs?raw=true  https://github.com/caipine/FlowC/blob/master/Cell%20SARA%20treated.fcs?raw=true'), 
                         p('You can change the channel to choose different fluoresce color (in example files, FL1_A is green, FL2_A is blue, FL3_A is yellow,  but different FCS machine have different setting)'),
                         p('You can label the X or Y, such as different target protein in your experiment, such as CD45, EGFP.'),
-                        p('X gate line and Y gate line will divide the sample as 4 areas, program will give the percentage of each area which covered events. You can change the X gate line and Y gate line to set new gate.')
+                        p('X gate line and Y gate line will divide the sample as 4 areas, program will calculati the percentage of each area which covered events. You can change the X gate line and Y gate line to set new gate.')
                         
                         #submitButton('Submit')
                         
