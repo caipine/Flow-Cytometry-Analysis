@@ -36,12 +36,18 @@ shinyServer(
                 
                                 plot1 <-  ggplot(log10(x1), aes_string(x= names[x_ch], y= names[y_ch] )) +  
                                           geom_point(pch = ".", colour =densCols(log10(x1[, c(x_ch,y_ch)]), colramp = colPalette)) + 
-                                          gate1 +gate2 + label1 + label2 + label3 + label4 + 
-                                          xlab(paste(input$x_lab,  "(", names(x1)[x_ch], ")")) + 
-                                          ylab(paste(input$y_lab,  "(", names(x1)[y_ch], ")")) + 
-                                          theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-                                          ggtitle(paste(inFile$name," Flow Cytometry Analysis") ) #"Flow Cytometry Analysis"
-                                plot1
+                                          gate1 +gate2 + label1 + label2 + label3 + label4 +                                            
+                                          theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+                
+                                                         
+                                if ( input$title == T) 
+                                        plot1 <- plot1 + ggtitle(paste(inFile$name," Flow Cytometry Analysis") ) +
+                                                        xlab(paste(input$x_lab,  "(", names(x1)[x_ch], ")")) + 
+                                                        ylab(paste(input$y_lab,  "(", names(x1)[y_ch], ")")) 
+                                        else
+                                                plot1 <- plot1 +  ggtitle(input$title_in ) +
+                                                        xlab(input$x_lab) +  ylab(input$y_lab) 
+                        plot1
                 
                                         })                         
                                 }

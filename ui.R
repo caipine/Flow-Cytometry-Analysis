@@ -1,5 +1,5 @@
 shinyUI(fluidPage(
-        titlePanel("Flow Cytometry Analysis Application, (please be patient, it takes about 1 minute to show plot)"),
+        titlePanel("Flow Cytometry Analysis Application, (Manual is on the bottom of the page,please be patient, it takes about 1 minute to show plot)"),
         sidebarLayout(
                 sidebarPanel(
                         fileInput('file1', 'Choose file to upload',
@@ -13,6 +13,7 @@ shinyUI(fluidPage(
                                   )
                         ),
                         
+                        checkboxInput("title", "Show main title as 'Flow Cytometry Analysis' , Xlab and Ylab index", FALSE),
                         
                         fluidRow(
                               column(5,
@@ -37,6 +38,7 @@ shinyUI(fluidPage(
                         #numericInput('y_ch', 'Choose Y Channel',2, min = 1, max = 5,),
                         #sliderInput('x_num', 'Choose Channel',value = 3, min = 1, max = 5, step = 1,),
                         #sliderInput('y_num', 'Choose Channel',value = 1, min = 1, max = 5, step = 1,),
+                        textInput("title_in", label = h4("please input main title"), value = ""),
                         textInput("x_lab", label = h4("please input X label"), value = ""),
                         textInput("y_lab", label = h4("please input Y label"), value = ""),
                         
@@ -56,7 +58,7 @@ shinyUI(fluidPage(
                         
                 ),
                 mainPanel(
-                        plotOutput('newPlot', width = "70%", height = "650px")
+                        plotOutput('newPlot', width = "70%", height = "950px")
                 )
         )
 ))
