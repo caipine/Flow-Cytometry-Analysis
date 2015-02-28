@@ -1,5 +1,5 @@
 shinyUI(fluidPage(
-        titlePanel("Flow Cytometry Analysis Application, (Manual is on the bottom of the page,please be patient, it takes about 1 minute to show plot)"),
+        titlePanel("Flow Cytometry Analysis Application"),
         sidebarLayout(
                 sidebarPanel(
                         fluidRow(
@@ -13,7 +13,7 @@ shinyUI(fluidPage(
                                           '.csv',
                                           '.fcs'
                                                 )  ),
-                                       textInput("title_in1", label = h4("please input main title"), value = "")
+                                       textInput("title_in1", label = h4("please input main title"), value = "1")
                                   ),
                                 column(5,
                                        fileInput('file2', 'Choose file2 to upload',
@@ -25,7 +25,7 @@ shinyUI(fluidPage(
                                                          '.csv',
                                                          '.fcs'
                                                      ) ),
-                                       textInput("title_in2", label = h4("please input main title"), value = "")
+                                       textInput("title_in2", label = h4("please input main title"), value = "2")
                                        
                                   )
                                 ),
@@ -40,7 +40,7 @@ shinyUI(fluidPage(
                                                          '.csv',
                                                          '.fcs'
                                                  ) ),
-                                       textInput("title_in3", label = h4("please input main title"), value = "")
+                                       textInput("title_in3", label = h4("please input main title"), value = "3")
                                        ),
                                 column(5,
                                        fileInput('file4', 'Choose file4 to upload',
@@ -52,38 +52,36 @@ shinyUI(fluidPage(
                                                          '.csv',
                                                          '.fcs'
                                                  )),
-                                       textInput("title_in4", label = h4("please input main title"), value = "")
+                                       textInput("title_in4", label = h4("please input main title"), value = "4")
                                        )
                         ),
-                        checkboxInput("title", "Show main title as 'Flow Cytometry Analysis' , Xlab and Ylab index", FALSE),
+                        checkboxInput("title_check", "Show main title as 'Flow Cytometry Analysis' , Xlab and Ylab index", FALSE),
                         
                         fluidRow(
                               column(5,
                                 radioButtons('x_ch', 'Choose X Channel',
-                                     c(FSC_A = 1,
-                                       SSC_A = 2,
-                                       FL1_A = 3,
-                                       FL2_A = 4,
-                                       FL3_A = 5), 3
+                                     c(FSC_A_ch1= 1,
+                                       SSC_A_ch2 = 2,
+                                       FL1_A_ch3 = 3,
+                                       FL2_A_ch4 = 4,
+                                       FL3_A_ch5 = 5), 4
                                      )),
                               column(5,
                                 radioButtons('y_ch', 'Choose X Channel',
-                                     c(FSC_A = 1,
-                                       SSC_A = 2,
-                                       FL1_A = 3,
-                                       FL2_A = 4,
-                                       FL3_A = 5), 2
+                                     c(FSC_A_ch1 = 1,
+                                       SSC_A_ch2 = 2,
+                                       FL1_A_ch3 = 3,
+                                       FL2_A_ch4 = 4,
+                                       FL3_A_ch5 = 5), 2
                         ))
                         ),
                         
-                        #numericInput('x_ch', 'Choose X Channel',3, min = 1, max = 5,),
-                        #numericInput('y_ch', 'Choose Y Channel',2, min = 1, max = 5,),
-                        #sliderInput('x_num', 'Choose Channel',value = 3, min = 1, max = 5, step = 1,),
-                        #sliderInput('y_num', 'Choose Channel',value = 1, min = 1, max = 5, step = 1,),
-                        #textInput("title_in", label = h4("please input main title"), value = ""),
-                        textInput("x_lab", label = h4("please input X label"), value = ""),
-                        textInput("y_lab", label = h4("please input Y label"), value = ""),
-                        
+                        fluidRow(
+                                column(5,textInput("x_lab", label = h4("please input X label"), value = "")                                       
+                                ),
+                                column(5,textInput("y_lab", label = h4("please input Y label"), value = "")
+                                )
+                        ),
                         sliderInput('xgate', 'Choose x gate line',value = 4, min = 0.5, max = 7.5, step = 0.1,),
                         sliderInput('ygate', 'Choose y gate line',value = 4, min = 0.5, max = 7.5, step = 0.1,),
                         submitButton('Submit'),
@@ -96,7 +94,11 @@ shinyUI(fluidPage(
                         
                 ),
                 mainPanel(
+                        p("Manual is on the bottom of the page,please be patient, it takes about 1 minute to show plot,"),
+                        p("After change setting, submit! Any suggestion, email: caipine@yahoo.com. 2-27-2015"),
+                        #verbatimTextOutput("main_title_test"),
                         plotOutput('newPlot', width = "70%", height = "950px")
+                        
                 )
         )
 ))
